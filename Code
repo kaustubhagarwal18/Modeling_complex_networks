@@ -1,0 +1,47 @@
+library(igraph)
+dat=read.csv(file.choose("mydata.csv"),header=TRUE)
+g6=graph.data.frame(dat,directed=FALSE)
+plot(g6)
+
+
+vcount(g6)   # count number of nodes in a network! nodes -> 167
+ecount(g6)  # count total edges in a network!    links -> 82876
+
+strength(g6) #  to know the degree of every node! 
+
+deg <- degree(g6)
+print(deg)
+plot(deg)    # degree distribution! 
+mean(deg)    # Average degree! -> 992.5269
+var(deg)     # degree variance! -> 1726049 ?????
+max(deg)
+transitivity(g6)        # clustering coefficient - > 0.5412664
+dia <- diameter(g6)    # diameter of graph! -> 5
+dia
+adj_g6 <- as_adjacency_matrix(g6)     #convert to adjacency matrix!
+lap_g6 <- laplacian_matrix(g6)        # convert to Laplacian matrix!
+
+s <- spectrum(g6)
+max(s)
+spectrum(g6, algorithm = c("arpack"), options = arpack_defaults)
+plot(s)
+eigen(adj_g6)
+lead <- leading.eigenvector.community(g6)
+lead
+ev <- eigen(adj_g6)     # get all the eigen vectors(ev)!
+values <- ev$values     # values of all eigenvectors!
+spectral_radius = max(eigen(adj_g6)$values)  # spectral radius! -> 3581.163
+spectral_radius
+ev_l <- eigen(lap_g6)
+values_l <- ev_l$values
+values_l
+min(eigen(lap_g6)$values)
+algebric_connectivity = ev_l$values[length(ev_l$value)-1]   # Algebric connectivity -> 0.9048787 
+algebric_connectivity
+plot(degree(g6), knnnet$knn, xlab = "k", ylab = "knn(k)")
+assordegree <- assortativity.degree(graph = g6, directed = FALSE)
+print(assordegree)        # assor -> 0.1548769
+plot(assordegree)
+clustering_coefficient <- transitivity(g6, type = "average")   # Clustering Coefficient = 0.6863969
+print(clustering_coefficient)
+uDist(adj_g6)
