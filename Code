@@ -45,3 +45,24 @@ plot(assordegree)
 clustering_coefficient <- transitivity(g6, type = "average")   # Clustering Coefficient = 0.6863969
 print(clustering_coefficient)
 uDist(adj_g6)
+
+
+
+distances(g6)
+all_shortest_paths(g6,1)
+degree(g6,1)
+mean_distance(g6)        # hopcount??   1.967391
+shortest_paths(g6,1,700)
+dt <- distance_table(g6)
+plot(dt)
+distMatrix <- shortest.paths(g6, v = 1, to =  167)
+
+edge_density(g6)      # link density   5.979078
+
+library(qgraph)
+smallworldIndex(g6)
+
+smallworldness(g6)
+si
+
+transitivity(g6)
